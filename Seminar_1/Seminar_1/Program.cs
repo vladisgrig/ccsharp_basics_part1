@@ -21,9 +21,18 @@ namespace Seminar_1
 
             //Expr3.Задано время Н часов(ровно).Вычислить угол в градусах между часовой и минутной стрелками.Например, 5 часов-> 150 градусов, 20 часов-> 120 градусов.Не использовать циклы.
             Console.WriteLine("Введите число от 0 до 24");
-            Console.ReadLine();
+            CalculateAngle(Console.ReadLine());
+
 
             //Expr4.Найти количество чисел меньших N, которые имеют простые делители X или Y.
+            Console.WriteLine("Введите N:");
+            int N = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите простой делитель X:");
+            int X = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите простой делитель Y:");
+            int Y = int.Parse(Console.ReadLine());
+            FindNumberOfIntegersByDivider(N, X, Y);
+
 
             //Expr5.Найти количество високосных лет на отрезке[a, b] не используя циклы.
 
@@ -33,6 +42,37 @@ namespace Seminar_1
 
             //Expr8.Дана прямая L и точка A.Найти точку пересечения прямой L с перпендикулярной ей прямой P, проходящей через точку A.
 
+        }
+
+        private static void FindNumberOfIntegersByDivider(int n, int x, int y)
+        {
+            int count = 0;
+            while (n > 1)
+            {
+                n--;
+                if ((n % x == 0) && (n % y == 0))
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine(count);
+        }
+
+        private static void CalculateAngle(string str_hour)
+        {
+            int hour = int.Parse(str_hour);
+            if (hour > 6)
+            {
+                int angle = (12 - (hour % 12)) * 30;
+                Console.WriteLine("Угол равен: {0}", angle);
+            }
+            else
+            {
+                int angle = (hour % 12) * 30;
+                Console.WriteLine("Угол равен: {0}", angle);
+            }
+
+            
         }
 
         static void ExpandNumber(int c)
